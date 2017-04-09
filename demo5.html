@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2D上下文-绘制矩形-描边线条的样式-线条相交的方式</title>
+</head>
+<body>
+<canvas id="drawing" width="600" height="600"></canvas>
+</body>
+<script>
+    var drawing = document.getElementById('drawing');
+
+    if (drawing.getContext) { // 确定浏览器支持<canvas>元素
+        var context = drawing.getContext('2d');
+
+        // 设置线条宽度
+        context.lineWidth = 20;
+
+        // 设置线条末端形状
+        context.lineJoin = 'round';// 圆交
+        context.lineJoin = 'bevel';// 斜交
+        context.lineJoin = 'miter';// 斜接
+
+        // 绘制红色描边矩形
+        context.strokeStyle = '#ff0000';
+        context.strokeRect(100, 100, 300, 300);
+
+        // 绘制半透明的蓝色描边矩形
+        context.strokeStyle = 'rgba(0,0,255,0.5)';
+        context.strokeRect(200, 200, 300, 300);
+
+    }
+</script>
+</html>
