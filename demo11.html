@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制图像</title>
+</head>
+<body>
+<canvas id="drawing" width="200" height="200"></canvas>
+<img src="img/James-McAvoy.png" width="200" height="200">
+</body>
+<script>
+    var drawing = document.getElementById('drawing');
+
+    if (drawing.getContext) { // 确定浏览器支持<canvas>元素
+        var context = drawing.getContext('2d');
+
+        // 获取文档中第一幅图像
+        var image = document.images[0];
+        // 将该图像绘制到画布上，起点为（10,10）图像的宽度和高度分别为200px
+        context.drawImage(image, 0, 0, 200, 200);
+
+        // 把图像的某一区域绘制到画布上，以下参数分别为: 要绘制的图像、源图像的x坐标、源图像的y坐标、源图像的宽度、源图像的高度、目标图像的x坐标、目标图像的y坐标、目标图像的宽度、目标图像的高度
+        context.drawImage(image, 300, 300, 1000, 1000, 0, 0, 100, 100);
+    }
+</script>
+</html>
