@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模式</title>
+</head>
+<body>
+<canvas id="drawing" width="200" height="200"></canvas>
+<img src="img/1.png">
+</body>
+<script>
+    var drawing = document.getElementById('drawing');
+
+    if (drawing.getContext) { // 确定浏览器支持<canvas>元素
+        var context = drawing.getContext('2d');
+
+        // 获取文档中第一幅图像
+        var image = document.images[0];
+        var pattern = context.createPattern(image, 'repeat');
+
+        // 绘制矩形
+        context.fillStyle = pattern;
+        context.fillRect(10, 10, 150, 150);
+    }
+</script>
+</html>

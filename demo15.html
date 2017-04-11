@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>劲向渐变-1</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<canvas id="drawing" width="700" height="700"></canvas>
+</body>
+<script>
+    var drawing = document.getElementById('drawing');
+
+    if (drawing.getContext) { // 确定浏览器支持<canvas>元素
+        var context = drawing.getContext('2d');
+
+        var r = 0;
+        var forecolor = '';
+
+        function changeColor() {
+            forecolor = '';
+            for (var i = 0; i < 6; i++) {
+                var num = Math.floor(Math.random() * 16);
+                if (num == 10) {
+                    num = 'a';
+                } else if (num == 11) {
+                    num = 'b';
+                } else if (num == 12) {
+                    num = 'c';
+                } else if (num == 13) {
+                    num = 'd';
+                } else if (num == 14) {
+                    num = 'e';
+                } else if (num == 15) {
+                    num = 'f';
+                }
+                forecolor += num;
+            }
+        }
+
+        changeColor();
+        console.log(forecolor);
+
+        function auto() {
+            r += 10;
+
+            var gradient = context.createRadialGradient(350, 350, r, 350, 350, 500);
+
+            gradient.addColorStop(0, '#' + forecolor);
+            gradient.addColorStop(1, '#fff');
+
+            // 绘制红色矩形
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, 700, 700);
+            if (r == 500) {
+                r = 0;
+                changeColor();
+            }
+
+        }
+
+        setInterval(function () {
+            auto();
+        }, 10);
+
+    }
+</script>
+</html>
