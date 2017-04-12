@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>合成-globalCompositionOperation</title>
+</head>
+<body>
+<canvas id="drawing" width="300" height="300"></canvas>
+</body>
+<script>
+    var drawing = document.getElementById('drawing');
+
+    if (drawing.getContext) { // 确定浏览器支持<canvas>元素
+        var context = drawing.getContext('2d');
+
+        // 绘制红色矩形
+        context.fillStyle = '#ff0000';
+        context.fillRect(10, 10, 50, 50);
+
+        // 设置合成操作
+        // context.globalCompositeOperation = 'source-over'; // (默认值)后绘制的图形位于先绘制的图形上方。
+        // context.globalCompositeOperation = 'source-in'; // 后绘制的图形与先绘制的图形重叠的部分可见，两者其他部分完全透明。
+        // context.globalCompositeOperation = 'source-out'; // 后绘制的图形与先绘制的图形不重叠的部分可见，先绘制的图形完全透明。
+        // context.globalCompositeOperation = 'source-atop'; // 后绘制的图形与先绘制的图形重叠的部分可见，先绘制的图形不受影响。
+        // context.globalCompositeOperation = 'destination-over'; // 后绘制的图形位于先绘制的图形下方，只有之前透明像素下的部分才可见。
+        // context.globalCompositeOperation = 'destination-in'; // 后绘制的图形位于先绘制的图形下方，两者不重叠部分完全透明。
+        // context.globalCompositeOperation = 'destination-out'; // 后绘制的图形擦除与先绘制的图形重叠的部分。
+        // context.globalCompositeOperation = 'destination-atop'; // 后绘制的图形位于先绘制的图形下方，在两者不重叠的地方，先绘制的图形会变透明。
+        // context.globalCompositeOperation = 'lighter'; // 后绘制的图形与先绘制的图形重叠部分值相加，使该部分变亮。
+        // context.globalCompositeOperation = 'copy'; // 后绘制的图形完全替代与之重叠的先绘制的图形。
+        context.globalCompositeOperation = 'xor'; // 后绘制的图形与先绘制的图形重叠的部分执行‘异或’操作。
+
+        // 绘制蓝色矩形
+        context.fillStyle = 'rgba(0,0,255,1)';
+        context.fillRect(30, 30, 50, 50);
+
+    }
+</script>
+</html>
