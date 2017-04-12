@@ -6,15 +6,24 @@
 </head>
 <body>
 <canvas id="drawing" width="300" height="300"></canvas>
-<img src="img/sea.png">
 </body>
 <script>
     var drawing = document.getElementById('drawing');
 
     if (drawing.getContext) { // 确定浏览器支持<canvas>元素
         var context = drawing.getContext('2d');
-        context.fillStyle = "#ff0000";
+        context.fillStyle = '#ff0000';
         context.fillRect(10, 10, 50, 50);
+
+        // 修改全局透明度
+        context.globalAlpha = 0.5;
+
+        // 绘制蓝色矩形
+        context.fillStyle = 'rgba(0,0,255,1)';
+        context.fillRect(30, 30, 50, 50);
+
+        // 重置全局透明度
+        context.globalAlpha = 0;
 
     }
 </script>
