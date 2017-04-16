@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebGL上下文</title>
+</head>
+<body>
+<canvas id="drawing" width="300" height="300"></canvas>
+</body>
+<script>
+    var drawing = document.getElementById('drawing');
+
+    // 确定浏览器支持<canvas>元素
+    if (drawing.getContext){
+
+        // 取得WebGL上下文
+        var gl = drawing.getContext('experimental-webgl');
+        // 如果浏览器不支持，gl为null
+        if(gl){
+            alert('true');
+        }
+    }
+</script>
+</html>
