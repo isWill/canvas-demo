@@ -24,7 +24,9 @@
 
         // 如果浏览器不支持，gl为null
         if (gl) {
-            // 使用WebGL
+            gl.viewport(0, 0, drawing.width / 2, drawing.height / 2);
+            gl.clearColor(0, 0, 0, 1);
+            gl.clear(gl.COLOR_BUFFER_BIT);
         } else {
             alert('WebGL context could not be created.');
         }
