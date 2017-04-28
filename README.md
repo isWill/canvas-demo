@@ -1,2 +1,2 @@
 # canvas-demo
-canvas API
+一系列关于canvas API的简单demo
